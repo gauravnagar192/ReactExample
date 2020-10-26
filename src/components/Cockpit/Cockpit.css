@@ -1,0 +1,38 @@
+.bold {
+    font-weight: bolder;
+}
+
+.green {
+    color: #00b894;
+}
+  
+.Cockpit {
+text-align: center;
+}
+
+.Cockpit button {
+padding: 1vw 2vw;
+outline: none;
+border: none;
+color: #FFFFFF;
+background-color: #6c5ce7;
+}
+
+.Cockpit button:hover {
+background-color: #a29bfe;
+}
+
+.Cockpit button.Red {
+background-color: #d63031;
+}
+
+.Cockpit button.Red:hover {
+background-color: #ff7675;
+}
+
+@media screen and (max-width: 425px) {
+.Cockpit button {
+    background-color: #fdcb6e;
+    padding: 1.1vh 2.2vh;
+}
+}

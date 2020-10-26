@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import Person from './Person/Person';
-import './index.css';
-import classes from './index.css';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
+import '../index.css';
+
 
 function App(props) {
-  let person;
+  let persons;
   const [personState, setPersonstate] = useState({
     persons: [
       { id: 'tfed', name: 'Max', age: 28 },
@@ -15,35 +16,11 @@ function App(props) {
 
   const [toggle, setToggle] = useState(false);
 
-  let assignedClasses = [];
-  let btnClasses = '';
   
 
-  if(personState.persons.length <= 2 ) {
-    assignedClasses.push(classes.green);
-  }
-  if(personState.persons.length <= 1) {
-    assignedClasses.push(classes.bold);
-  }
-
   if (toggle) {
-    person = personState.persons.map((element, i) => {
-      return (
-        <Person
-          key={element.id}
-          name={element.name}
-          age={element.age}
-          click={() => deleteData(i)}
-        >
-          <input
-            type="text"
-            onChange={(e) => changeData(e, element.id)}
-            value={element.name}
-          />
-        </Person>
-      );
-    });
-    btnClasses = classes.Red;
+    persons = <Persons persons={personState.persons} clicked={deleteData} changed={changeData} />
+    
   }
 
   function showPerson() {
@@ -74,11 +51,14 @@ function App(props) {
   }
 
   return (
-    <div className={classes.App}>
-      <h2>Hi, i am React App</h2>
-      <p className={assignedClasses.join(' ')}>This is really working</p>
-      <button className={btnClasses} onClick={showPerson}>Switch</button>
-      {person}
+    <div>
+      <Cockpit 
+        title={props.appTitle}
+        toggle={toggle}
+        persons={personState.persons}
+        show={showPerson}
+      />
+      {persons}
     </div>
   );
 }

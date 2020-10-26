@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../index.css';
+import classes from '../../../index.css';
 
 
 function Person(props) {
