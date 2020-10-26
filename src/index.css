@@ -15,7 +15,7 @@ code {
 .person {
   margin-top: 5vh;
   box-shadow: 10px 10px 10px -4px #000000;
-  margin: 5vh 20vh;
+  margin: 5vh;
   display: flex;
   justify-content: center;
   padding: 5vw;

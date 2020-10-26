@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Person from './Person/Person';
 import './index.css';
-import Radium from 'radium';
-import { StyleRoot } from 'radium';
+import styled from 'styled-components';
 
-function App() {
+function App(props) {
   let person;
   const [personState, setPersonstate] = useState({
     persons: [
@@ -16,17 +15,22 @@ function App() {
 
   const [toggle, setToggle] = useState(false);
 
-  const style = {
-    padding: '1vw 2vw',
-    outline: 'none',
-    border: 'none',
-    color: '#FFFFFF',
-    backgroundColor: '#6c5ce7',
-    ':hover': {
-      backgroundColor: '#0984e3',
-      padding: '1.1vw 2.2vw'
-    }
-  };
+  const StyledButton = styled.button`
+      padding: 1vw 2vw;
+      outline: none;
+      border: none;
+      color: #FFFFFF;
+      background-color:  ${props => props.alt ? '#6c5ce7' : '#d63031' };
+
+      &:hover {
+        background-color: #0984e3;
+      }
+
+      @media screen and (max-width: 425px) {
+        background-color: #0984e3;
+        padding: 1.1vh 2.2vh;
+      }
+  `
 
   const classes = [];
 
@@ -84,15 +88,13 @@ function App() {
   }
 
   return (
-    <StyleRoot>
     <div className="App">
       <h2>Hi, i am React App</h2>
       <p className={classes.join(' ')}>This is really working</p>
-      <button style={style} onClick={showPerson}>Switch Name</button>
+      <StyledButton alt={toggle} onClick={showPerson}>Switch</StyledButton>
       {person}
     </div>
-    </StyleRoot>
   );
 }
 
-export default Radium(App);
+export default App;
