@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Person from './Person/Person';
 import './index.css';
-import styled from 'styled-components';
+import classes from './index.css';
 
 function App(props) {
   let person;
@@ -15,30 +15,15 @@ function App(props) {
 
   const [toggle, setToggle] = useState(false);
 
-  const StyledButton = styled.button`
-      padding: 1vw 2vw;
-      outline: none;
-      border: none;
-      color: #FFFFFF;
-      background-color:  ${props => props.alt ? '#6c5ce7' : '#d63031' };
-
-      &:hover {
-        background-color: #0984e3;
-      }
-
-      @media screen and (max-width: 425px) {
-        background-color: #0984e3;
-        padding: 1.1vh 2.2vh;
-      }
-  `
-
-  const classes = [];
+  let assignedClasses = [];
+  let btnClasses = '';
+  
 
   if(personState.persons.length <= 2 ) {
-    classes.push("green");
+    assignedClasses.push(classes.green);
   }
   if(personState.persons.length <= 1) {
-    classes.push("bold");
+    assignedClasses.push(classes.bold);
   }
 
   if (toggle) {
@@ -58,6 +43,7 @@ function App(props) {
         </Person>
       );
     });
+    btnClasses = classes.Red;
   }
 
   function showPerson() {
@@ -88,10 +74,10 @@ function App(props) {
   }
 
   return (
-    <div className="App">
+    <div className={classes.App}>
       <h2>Hi, i am React App</h2>
-      <p className={classes.join(' ')}>This is really working</p>
-      <StyledButton alt={toggle} onClick={showPerson}>Switch</StyledButton>
+      <p className={assignedClasses.join(' ')}>This is really working</p>
+      <button className={btnClasses} onClick={showPerson}>Switch</button>
       {person}
     </div>
   );
