@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Person from './Person/Person';
 import './index.css';
+import Radium from 'radium';
+import { StyleRoot } from 'radium';
 
 function App() {
   let person;
@@ -13,6 +15,18 @@ function App() {
   });
 
   const [toggle, setToggle] = useState(false);
+
+  const style = {
+    padding: '1vw 2vw',
+    outline: 'none',
+    border: 'none',
+    color: '#FFFFFF',
+    backgroundColor: '#6c5ce7',
+    ':hover': {
+      backgroundColor: '#0984e3',
+      padding: '1.1vw 2.2vw'
+    }
+  };
 
   const classes = [];
 
@@ -70,13 +84,15 @@ function App() {
   }
 
   return (
+    <StyleRoot>
     <div className="App">
-      <h1>Hi, i am React App</h1>
+      <h2>Hi, i am React App</h2>
       <p className={classes.join(' ')}>This is really working</p>
-      <button onClick={showPerson}>Switch Name</button>
+      <button style={style} onClick={showPerson}>Switch Name</button>
       {person}
     </div>
+    </StyleRoot>
   );
 }
 
-export default App;
+export default Radium(App);
