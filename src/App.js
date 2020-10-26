@@ -14,6 +14,15 @@ function App() {
 
   const [toggle, setToggle] = useState(false);
 
+  const classes = [];
+
+  if(personState.persons.length <= 2 ) {
+    classes.push("green");
+  }
+  if(personState.persons.length <= 1) {
+    classes.push("bold");
+  }
+
   if (toggle) {
     person = personState.persons.map((element, i) => {
       return (
@@ -63,7 +72,7 @@ function App() {
   return (
     <div className="App">
       <h1>Hi, i am React App</h1>
-      <p>This is really working</p>
+      <p className={classes.join(' ')}>This is really working</p>
       <button onClick={showPerson}>Switch Name</button>
       {person}
     </div>

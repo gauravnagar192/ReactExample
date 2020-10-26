@@ -20,3 +20,10 @@ code {
   justify-content: center;
   padding: 5vw;
 }
+
+.bold {
+  font-weight: bolder;
+}
+.green {
+  color: #00b894;
+}
